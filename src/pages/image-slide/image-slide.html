@@ -8,6 +8,12 @@
 
   <ion-navbar>
     <ion-title>imageSlide</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only clear >
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -16,13 +22,13 @@
 <ion-content padding>
   <ion-slides class="image-slider" direction="vertical" slidesPerView="2" shouldEnableKeyboard="true">
     <ion-slide >
-      <img src="https://loremflickr.com/320/240/ugly?random=1" alt="">
+      <img src="https://loremflickr.com/320/240/ugly?random=1" imageViewer  alt="">
     </ion-slide>
     <ion-slide >
-      <img src="https://loremflickr.com/320/240/ugly?random=2" alt="">
+      <img src="https://loremflickr.com/320/240/ugly?random=2" imageViewer  alt="">
     </ion-slide>
     <ion-slide >
-      <img src="https://loremflickr.com/320/240/ugly?random=3" alt="">
+      <img src="https://loremflickr.com/320/240/ugly?random=3" imageViewer  alt="">
     </ion-slide>
   </ion-slides>
 </ion-content>

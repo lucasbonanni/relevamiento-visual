@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ImageSlidePage } from '../pages/image-slide/image-slide';
@@ -16,7 +16,8 @@ import { ImageSlidePage } from '../pages/image-slide/image-slide';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
