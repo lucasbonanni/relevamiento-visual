@@ -1,0 +1,24 @@
+page-home {
+    .card-background-page{
+        background-image: url(https://loremflickr.com/320/240/beautiful?random=3);
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        line-height: 240px;
+        height: 240px;
+    }
+
+    .card-background-page-2{
+        background-image: url(https://loremflickr.com/320/240/ugly?random=1);
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        line-height: 240px;
+        height: 240px;
+    }
+
+}
