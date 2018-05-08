@@ -13,6 +13,11 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ImageSlidePage } from '../pages/image-slide/image-slide';
 import { PhotoTakerPage } from '../pages/photo-taker/photo-taker';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+//firebase
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { firebaseConfig } from '../enviroments/enviroment';
+import { AngularFireModule } from 'angularfire2';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,8 @@ import { PhotoTakerPage } from '../pages/photo-taker/photo-taker';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
     IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
@@ -37,7 +44,8 @@ import { PhotoTakerPage } from '../pages/photo-taker/photo-taker';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Camera
+    Camera,
+    AuthServiceProvider
   ]
 })
 export class AppModule {}
