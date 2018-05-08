@@ -71,7 +71,7 @@ export class PhotoTakerPage implements OnInit {
 
   deletePhoto(index) {
     let confirm = this.alertCtrl.create({
-      title: 'Sure you want to delete this photo? There is NO undo!',
+      title: '¿Está seguro que quiere elminar la imagen?',
       message: '',
       buttons: [
         {
@@ -80,7 +80,7 @@ export class PhotoTakerPage implements OnInit {
             console.log('Disagree clicked');
           }
         }, {
-          text: 'Yes',
+          text: 'Si',
           handler: () => {
             console.log('Agree clicked');
             this.photos.splice(index, 1);
