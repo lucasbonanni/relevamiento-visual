@@ -19,7 +19,7 @@ import { usuarios } from '../../app/users';
 export class LoginPage {
 
   loading: Loading;
-  registerCredentials = { email: '', password: '' };
+  registerCredentials = { email: '', password: '', photoURL: '', displayName: '' };
   private: ActionSheetController;
   constructor(
     private nav: NavController,
@@ -92,18 +92,22 @@ export class LoginPage {
           handler: () => {
             this.registerCredentials.email = usuarios[0].nombre;
             this.registerCredentials.password = usuarios[0].clave;
+            this.login();
           }
         }, {
           text: usuarios[1].perfil + ' ' + usuarios[1].nombre,
           handler: () => {
             this.registerCredentials.email = usuarios[1].nombre;
             this.registerCredentials.password = usuarios[1].clave;
+            this.login();
           }
         }, {
           text: usuarios[2].perfil + ' ' + usuarios[2].nombre,
           handler: () => {
             this.registerCredentials.email = usuarios[2].nombre;
             this.registerCredentials.password = usuarios[2].clave;
+            this.login();
+            
           }
         },
         {
@@ -111,6 +115,7 @@ export class LoginPage {
           handler: () => {
             this.registerCredentials.email = usuarios[3].nombre;
             this.registerCredentials.password = usuarios[3].clave;
+            this.login();
           }
         },
         {
@@ -118,6 +123,7 @@ export class LoginPage {
           handler: () => {
             this.registerCredentials.email = usuarios[4].nombre;
             this.registerCredentials.password = usuarios[4].clave;
+            this.login();
           }
         }
       ]
