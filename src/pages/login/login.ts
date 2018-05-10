@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, Loading, AlertController, LoadingController, ActionSheetController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the LoginPage page.
@@ -38,7 +39,7 @@ export class LoginPage {
     this.showLoading()
     this.auth.signInWithEmail(this.registerCredentials).then(allowed => {
       console.log(allowed);
-        this.nav.setRoot('HomePage');
+        this.nav.setRoot(HomePage);
     }).catch(error=>{
       alert(error);
       this.loading.dismiss();
@@ -66,7 +67,7 @@ export class LoginPage {
 
   loginWithGithub(){
     this.auth.signInWithGithub().then(() =>{
-      this.nav.setRoot('HomePage');
+      this.nav.setRoot(HomePage);
     }).catch(error =>{
       alert(error);
     });;
@@ -74,7 +75,7 @@ export class LoginPage {
 
   loginWithGoogle(){
     this.auth.signInWithGoogle().then(() =>{
-      this.nav.setRoot('HomePage');
+      this.nav.setRoot(HomePage);
     }).catch(error =>{
       alert(error);
     });
