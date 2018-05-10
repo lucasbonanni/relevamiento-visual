@@ -19,7 +19,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseConfig } from '../enviroments/enviroment';
 import { AngularFireModule } from 'angularfire2';
 import { LoginPage } from '../pages/login/login';
-import { FirebaseProvider } from '../providers/firebase/firebase';
+import { ImageDbProvider } from '../providers/firebase/firebase';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @NgModule({
   declarations: [
@@ -49,8 +50,9 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
+    AngularFireDatabase,
     AuthServiceProvider,
-    FirebaseProvider
+    ImageDbProvider
   ]
 })
 export class AppModule {}

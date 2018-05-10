@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
   and Angular DI.
 */
 @Injectable()
-export class FirebaseProvider implements OnInit {
+export class ImageDbProvider implements OnInit {
 
   public newMessage: ImageModel;
   public imageFeas: Observable<ImageModel[]>;
