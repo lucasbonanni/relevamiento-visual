@@ -28,7 +28,23 @@ export class AuthServiceProvider {
   }
 
   signUp(credentials) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password);
+    return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password).then(() => {
+      return this.afAuth.auth.getRedirectResult().then(result => {
+        // This gives you a Google Access Token.
+        // You can use it to access the Google API.
+        // let token = result.credential.accessToken;
+        // The signed-in user info.
+        this.user = this.afAuth.auth.currentUser;
+        this.user.updateProfile({displayName:credentials.displayName,photoURL:credentials.photoURL});
+      }).catch(function (error) {
+        // Handle Errors here.
+        alert(error.message);
+      });
+    });
+  }
+
+  setProfile(displayName: string, imageURL: string) {
+    this.afAuth.auth.currentUser.updateProfile({ displayName: displayName, photoURL: imageURL })
   }
 
   get authenticated(): boolean {
@@ -40,38 +56,38 @@ export class AuthServiceProvider {
   }
 
   signInWithGoogle() {
-		console.log('Sign in with google');
-		return this.oauthSignIn(new firebase.auth.GoogleAuthProvider());
-}
+    console.log('Sign in with google');
+    return this.oauthSignIn(new firebase.auth.GoogleAuthProvider());
+  }
 
-signInWithGithub() {
-  console.log('Sign in with github');
-  return this.oauthSignIn(new firebase.auth.GithubAuthProvider());
-}
+  signInWithGithub() {
+    console.log('Sign in with github');
+    return this.oauthSignIn(new firebase.auth.GithubAuthProvider());
+  }
 
-private oauthSignIn(provider: AuthProvider) {
-	if (!(<any>window).cordova) {
-		return this.afAuth.auth.signInWithPopup(provider);
-	} else {
-		return this.afAuth.auth.signInWithRedirect(provider)
-		.then(() => {
-			return this.afAuth.auth.getRedirectResult().then( result => {
-				// This gives you a Google Access Token.
-				// You can use it to access the Google API.
-				let token = result.credential.accessToken;
-				// The signed-in user info.
-				let user = result.user;
-				console.log(token, user);
-			}).catch(function(error) {
-				// Handle Errors here.
-				alert(error.message);
-			});
-		});
-	}
-}
-  
+  private oauthSignIn(provider: AuthProvider) {
+    if (!(<any>window).cordova) {
+      return this.afAuth.auth.signInWithPopup(provider);
+    } else {
+      return this.afAuth.auth.signInWithRedirect(provider)
+        .then(() => {
+          return this.afAuth.auth.getRedirectResult().then(result => {
+            // This gives you a Google Access Token.
+            // You can use it to access the Google API.
+            let token = result.credential.accessToken;
+            // The signed-in user info.
+            let user = result.user;
+            console.log(token, user);
+          }).catch(function (error) {
+            // Handle Errors here.
+            alert(error.message);
+          });
+        });
+    }
+  }
+
   public getUserInfo(): User {
-    return this.user;
+    return this.afAuth.auth.currentUser;
   }
 
 }
