@@ -20,10 +20,12 @@ page-home {
         line-height: 285px;
         height: 285px;
     }
-
-    .button-inner{
-        color: aliceblue;
+    .content{
+        .button-inner{
+            color: aliceblue;
+        }
     }
+    
 
     .button-md{
         font-size: 2rem;
