@@ -18,13 +18,15 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseConfig } from '../enviroments/enviroment';
 import { AngularFireModule } from 'angularfire2';
+import { LoginPage } from '../pages/login/login';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ImageSlidePage,
-    PhotoTakerPage
+    PhotoTakerPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { AngularFireModule } from 'angularfire2';
     MyApp,
     HomePage,
     ImageSlidePage,
-    PhotoTakerPage
+    PhotoTakerPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
