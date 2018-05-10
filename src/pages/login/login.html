@@ -18,12 +18,14 @@
           </span>
 
           <div class="wrap-input100 validate-input" data-validate="Ingrese el email">
-            <input class="input100" type="text" name="email" placeholder="Correo electronico" [(ngModel)]="registerCredentials.email" email required>
+            <input class="input100" type="text" name="email" placeholder="Correo electronico" [(ngModel)]="registerCredentials.email"
+              email required>
             <span class="focus-input100" data-placeholder="&#xf007;"></span>
           </div>
 
           <div class="wrap-input100 validate-input" data-validate="Ingrese contraseña">
-            <input class="input100" type="password" name="password" placeholder="Contraseña" [(ngModel)]="registerCredentials.password" required>
+            <input class="input100" type="password" name="password" placeholder="Contraseña" [(ngModel)]="registerCredentials.password"
+              required>
             <span class="focus-input100" data-placeholder="&#xf191;"></span>
           </div>
 
@@ -46,9 +48,12 @@
             </a>
           </div> -->
         </form>
+        <div class="container-login100-form-btn">
+            <button class="login100-form-btn" (click)="presentActionSheet()">más opciones!!</button>
+          </div>
       </div>
     </div>
   </div>
-  <div id="dropDownSelect1"></div>
+
 
 </ion-content>

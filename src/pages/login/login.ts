@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, Loading, AlertController, LoadingController, ActionSheetController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home';
+import { usuarios } from '../../app/users';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,12 +20,13 @@ export class LoginPage {
 
   loading: Loading;
   registerCredentials = { email: '', password: '' };
-  private : ActionSheetController;
+  private: ActionSheetController;
   constructor(
-    private nav: NavController, 
-    private auth: AuthServiceProvider, 
-    private alertCtrl: AlertController, 
-    private loadingCtrl: LoadingController) {
+    private nav: NavController,
+    private auth: AuthServiceProvider,
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController,
+    private actionSheetCtrl: ActionSheetController) {
   }
 
   ionViewDidLoad() {
@@ -39,8 +41,8 @@ export class LoginPage {
     this.showLoading()
     this.auth.signInWithEmail(this.registerCredentials).then(allowed => {
       console.log(allowed);
-        this.nav.setRoot(HomePage);
-    }).catch(error=>{
+      this.nav.setRoot(HomePage);
+    }).catch(error => {
       alert(error);
       this.loading.dismiss();
     });
@@ -56,7 +58,7 @@ export class LoginPage {
 
   showError(text) {
     this.loading.dismiss();
- 
+
     let alert = this.alertCtrl.create({
       title: 'Se produjo un error',
       subTitle: text,
@@ -65,19 +67,61 @@ export class LoginPage {
     alert.present();
   }
 
-  loginWithGithub(){
-    this.auth.signInWithGithub().then(() =>{
+  loginWithGithub() {
+    this.auth.signInWithGithub().then(() => {
       this.nav.setRoot(HomePage);
-    }).catch(error =>{
+    }).catch(error => {
       alert(error);
     });;
   }
 
-  loginWithGoogle(){
-    this.auth.signInWithGoogle().then(() =>{
+  loginWithGoogle() {
+    this.auth.signInWithGoogle().then(() => {
       this.nav.setRoot(HomePage);
-    }).catch(error =>{
+    }).catch(error => {
       alert(error);
     });
+  }
+
+  presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Seleccionar un usuario',
+      buttons: [
+        {
+          text: usuarios[0].perfil + ' ' + usuarios[0].nombre,
+          handler: () => {
+            this.registerCredentials.email = usuarios[0].nombre;
+            this.registerCredentials.password = usuarios[0].clave;
+          }
+        }, {
+          text: usuarios[1].perfil + ' ' + usuarios[1].nombre,
+          handler: () => {
+            this.registerCredentials.email = usuarios[1].nombre;
+            this.registerCredentials.password = usuarios[1].clave;
+          }
+        }, {
+          text: usuarios[2].perfil + ' ' + usuarios[2].nombre,
+          handler: () => {
+            this.registerCredentials.email = usuarios[2].nombre;
+            this.registerCredentials.password = usuarios[2].clave;
+          }
+        },
+        {
+          text: usuarios[3].perfil + ' ' + usuarios[3].nombre,
+          handler: () => {
+            this.registerCredentials.email = usuarios[3].nombre;
+            this.registerCredentials.password = usuarios[3].clave;
+          }
+        },
+        {
+          text: usuarios[4].perfil + ' ' + usuarios[4].nombre,
+          handler: () => {
+            this.registerCredentials.email = usuarios[4].nombre;
+            this.registerCredentials.password = usuarios[4].clave;
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 }
