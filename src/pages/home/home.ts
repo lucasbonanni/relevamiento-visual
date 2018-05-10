@@ -21,7 +21,11 @@ export class HomePage {
   }
 
   cosasFeas(){
-    this.navCtrl.push(ImageSlidePage);
+    this.navCtrl.push(ImageSlidePage, {type:'feas'});
+  }
+
+  cosasLindas(){
+    this.navCtrl.push(ImageSlidePage, {type:'lindas'});
   }
 
   takePhoto(){
