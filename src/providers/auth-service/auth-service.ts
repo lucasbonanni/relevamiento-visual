@@ -24,7 +24,13 @@ export class AuthServiceProvider {
   signInWithEmail(credentials) {
     console.log('Sign in with email');
     return this.afAuth.auth.signInWithEmailAndPassword(credentials.email,
-      credentials.password);
+      credentials.password).then(()=>{
+        console.log(credentials);
+        this.user = this.afAuth.auth.currentUser;
+        if(credentials.displayName && credentials.photoURL && credentials.displayName !== '' && credentials.photoURL !== ''){
+          this.user.updateProfile({displayName:credentials.displayName,photoURL:credentials.photoURL});
+        }
+      });
   }
 
   signUp(credentials) {
