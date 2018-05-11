@@ -7,10 +7,10 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>imageSlide</ion-title>
+    <ion-title>Lista de imagenes {{ type }}</ion-title>
 
     <ion-buttons end>
-      <button ion-button icon-only clear>
+      <button ion-button icon-only clear (click)="takePhoto()">
         <ion-icon name="camera"></ion-icon>
       </button>
     </ion-buttons>
@@ -21,17 +21,17 @@
 
 <ion-content padding>
   <ion-slides class="image-slider" direction="vertical" slidesPerView="2" shouldEnableKeyboard="true">
-    <ion-slide class="animated slideInDown">
-      <p>Nombre usuario</p>
-      <img src="https://loremflickr.com/320/240/ugly?random=4" imageViewer alt="">
+    <ion-slide class="animated slideInDown" *ngFor="let photo of images | async; let id = index">
+      <p>{{photo.displayName}}</p>
+      <img [src]="photo.image64Data" *ngIf="photo.image64Data" imageViewer alt="">
     </ion-slide>
-    <ion-slide class="animated slideInDown">
+    <!-- <ion-slide class="animated slideInDown">
         <p>Nombre usuario</p>
       <img src="https://loremflickr.com/320/240/ugly?random=2" imageViewer alt="">
     </ion-slide>
     <ion-slide class="animated slideInDown">
       <p>Nombre usuario</p>
       <img src="https://loremflickr.com/320/240/ugly?random=3" imageViewer alt="">
-    </ion-slide>
+    </ion-slide> -->
   </ion-slides>
 </ion-content>

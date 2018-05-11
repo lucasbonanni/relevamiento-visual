@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ImageModel } from '../../models/imageModel';
 import { Observable } from 'rxjs/Observable';
 import { ImageDbProvider } from '../../providers/firebase/firebase';
+import { PhotoTakerPage } from '../photo-taker/photo-taker';
 
 /**
  * Generated class for the ImageSlidePage page.
@@ -25,15 +26,19 @@ export class ImageSlidePage implements OnInit {
   }
 
   ngOnInit(): void {
-    // if(this.type === 'feas'){
-    //   this.images = this.firebase.getFeas();
-    // }else if(this.type === 'lindas'){
-    //   this.images = this.firebase.getLindas();
-    // }
+    if (this.type === 'feas') {
+      this.images = this.firebase.getFeas();
+    } else if (this.type === 'lindas') {
+      this.images = this.firebase.getLindas();
+    }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ImageSlidePage');
+  }
+
+  public takePhoto() {
+    this.navCtrl.push(PhotoTakerPage, { type: this.type });
   }
 
 }
