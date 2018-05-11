@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { ImageModel } from '../../models/imageModel';
@@ -21,9 +20,6 @@ export class ImageDbProvider implements OnInit {
   public imageLindasRef: AngularFireList<ImageModel>;
 
   constructor(private db: AngularFireDatabase) {
-  }
-
-  ngOnInit(): void {
     this.imageFeasRef = this.db.list<ImageModel>('relevamiento/feas');
     this.imageLindasRef = this.db.list<ImageModel>('relevamiento/lindas');
     this.imageFeas = this.imageFeasRef.valueChanges();
