@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
   and Angular DI.
 */
 @Injectable()
-export class ImageDbProvider implements OnInit {
+export class ImageDbProvider {
 
   public newMessage: ImageModel;
   public imageFeas: Observable<ImageModel[]>;
