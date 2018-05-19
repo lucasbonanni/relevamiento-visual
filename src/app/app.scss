@@ -43,6 +43,47 @@
 // .toolbar {
 //   background-color: rgba(255, 255, 255, 0);
 // }
+#custom-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100000;
+  width:100%;
+  background-color: #FF7519;
+}
+
+.flb {
+  background-color: #FF7519;
+  height:100%;
+  width:100%;
+  animation: pulse 1s linear forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner-logo {
+  height: 50%;
+  width: 50%;
+  max-height: 50%;
+  max-width: 50%;
+  z-index: 10000;
+}
+
+.loading-md .loading-wrapper {
+  border-radius: 0px;
+  max-width: 280px;
+  max-height: 90%;
+  /* color: rgba(0, 0, 0, 0.5); */
+  background: rgba(0, 0, 0, 0);
+  -webkit-box-shadow: 0 16px 20px rgba(0, 0, 0, 0);
+  box-shadow: 0 16px 20px rgba(0, 0, 0, 0);
+  padding: 0;
+}
+
+
 ion-header {
   .toolbar {
     .toolbar-background {

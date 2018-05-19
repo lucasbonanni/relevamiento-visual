@@ -11,7 +11,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 })
 export class MyApp {
   rootPage:any = LoginPage;
-
+  splash: boolean = true;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,private auth: AuthServiceProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -31,6 +31,10 @@ export class MyApp {
           this.rootPage = LoginPage;
         }
       );
+      setTimeout(() => {
+        this.splash = false
+        // this.busyLoader.dismissBusyLoader();
+      }, 3000);
     });
   }
 
