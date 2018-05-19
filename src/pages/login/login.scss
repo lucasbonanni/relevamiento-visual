@@ -1,11 +1,6 @@
 page-login {
 
-  $font-family-base: sans-serif !default;
-  @font-face {
-    font-family: sans-serif;
-    src: url(../../assets/fonts/poppins/Poppins-Regular.ttf) format("ttf");
-    font-weight: 200
-    }
+
     .button-md {
       border-radius: 2px;
       overflow: hidden;
@@ -221,6 +216,8 @@ page-login {
     border-radius: 50%;
     background-color: #fff;
     margin: 0 auto;
+    background-image: url('../assets/imgs/camera-2.png');
+    background-size:120px;
   }
   
   .login100-form-title {
