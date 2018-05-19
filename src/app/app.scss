@@ -28,6 +28,16 @@
  * Copyright (c) 2018 Daniel Eden
  */
 
+ .action-sheet-md {
+  
+  .action-sheet-group:last-child {
+    // border-radius: 30px;
+    overflow:hidden;
+    background-color: rgba(158, 249, 255, 0.90);
+  }
+}
+
+
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;

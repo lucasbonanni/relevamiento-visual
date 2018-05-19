@@ -20,7 +20,6 @@ export class LoginPage {
 
   loading: Loading;
   registerCredentials = { email: '', password: '', photoURL: '', displayName: '' };
-  private: ActionSheetController;
   constructor(
     private nav: NavController,
     private auth: AuthServiceProvider,
