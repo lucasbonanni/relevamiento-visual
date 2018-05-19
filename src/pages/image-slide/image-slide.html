@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Lista de imagenes {{ type }}</ion-title>
+    <ion-title>Lista de imágenes {{ type }}</ion-title>
 
     <ion-buttons end>
       <button ion-button icon-only clear (click)="takePhoto()">
@@ -22,7 +22,7 @@
 <ion-content padding>
   <ion-slides class="image-slider" direction="vertical" slidesPerView="2" shouldEnableKeyboard="true">
     <ion-slide class="animated slideInDown" *ngFor="let photo of images | async; let id = index">
-      <p>{{photo.displayName}}</p>
+      <h4>{{photo.displayName}}</h4>
       <img [src]="photo.image64Data" *ngIf="photo.image64Data" imageViewer alt="">
     </ion-slide>
     <!-- <ion-slide class="animated slideInDown">
