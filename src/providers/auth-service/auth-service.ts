@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User, AuthProvider } from '@firebase/auth-types';
 import * as firebase from 'firebase/app';
+import { ToastController } from 'ionic-angular';
 
 
 /*
@@ -15,7 +16,7 @@ export class AuthServiceProvider {
 
   user: User;
   access: boolean;
-  constructor(public afAuth: AngularFireAuth) {
+  constructor(public afAuth: AngularFireAuth,private toastCtrl: ToastController) {
     afAuth.authState.subscribe(user => {
       this.user = user;
     });
@@ -44,7 +45,7 @@ export class AuthServiceProvider {
         this.user.updateProfile({displayName:credentials.displayName,photoURL:credentials.photoURL});
       }).catch(function (error) {
         // Handle Errors here.
-        alert(error.message);
+        this.showMessage(error.message);
       });
     });
   }
@@ -86,7 +87,7 @@ export class AuthServiceProvider {
             console.log(token, user);
           }).catch(function (error) {
             // Handle Errors here.
-            alert(error.message);
+            this.showMessage(error.message);
           });
         });
     }
@@ -94,6 +95,16 @@ export class AuthServiceProvider {
 
   public getUserInfo(): User {
     return this.afAuth.auth.currentUser;
+  }
+
+
+  showMessage(text:string) {
+    const toast = this.toastCtrl.create({
+      message: text,
+      duration: 3000,
+      position: 'middle'
+    });
+    toast.present();
   }
 
 }
