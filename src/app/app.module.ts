@@ -21,6 +21,7 @@ import { AngularFireModule } from 'angularfire2';
 import { LoginPage } from '../pages/login/login';
 import { ImageDbProvider } from '../providers/firebase/firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { BusyLoaderProvider } from '../providers/busy-loader/busy-loader';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
     Camera,
     AngularFireDatabase,
     AuthServiceProvider,
-    ImageDbProvider
+    ImageDbProvider,
+    BusyLoaderProvider
   ]
 })
 export class AppModule {}

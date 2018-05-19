@@ -6,13 +6,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { BusyLoaderProvider } from '../providers/busy-loader/busy-loader';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   rootPage:any = LoginPage;
   splash: boolean = true;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,private auth: AuthServiceProvider) {
+  constructor(
+    platform: Platform, 
+    statusBar: StatusBar, 
+    splashScreen: SplashScreen,
+    private auth: AuthServiceProvider,
+    private busyLoader: BusyLoaderProvider) {
+      this.busyLoader.showBusyLoader();
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -33,7 +40,7 @@ export class MyApp {
       );
       setTimeout(() => {
         this.splash = false
-        // this.busyLoader.dismissBusyLoader();
+        this.busyLoader.dismissBusyLoader();
       }, 3000);
     });
   }

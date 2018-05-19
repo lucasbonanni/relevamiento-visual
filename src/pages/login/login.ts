@@ -3,6 +3,7 @@ import { IonicPage, NavController, Loading, AlertController, LoadingController, 
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home';
 import { usuarios } from '../../app/users';
+import { BusyLoaderProvider } from '../../providers/busy-loader/busy-loader';
 
 /**
  * Generated class for the LoginPage page.
@@ -25,7 +26,8 @@ export class LoginPage {
     private auth: AuthServiceProvider,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
-    private actionSheetCtrl: ActionSheetController) {
+    private actionSheetCtrl: ActionSheetController,
+    private busyLoader: BusyLoaderProvider) {
   }
 
   ionViewDidLoad() {
@@ -37,26 +39,15 @@ export class LoginPage {
   }
 
   public login() {
-    this.showLoading()
-    // if(this.registerCredentials.email === 'test@test.com'){
-    //   this.registerCredentials.displayName = 'Lucas Bonanni';
-    //   this.registerCredentials.photoURL = 'https://loremflickr.com/320/240/picture,face?random=6'
-    // }
+    this.busyLoader.showBusyLoader();
     this.auth.signInWithEmail(this.registerCredentials).then(allowed => {
       console.log(allowed);
+      this.busyLoader.dismissBusyLoader();
       this.nav.setRoot(HomePage);
     }).catch(error => {
+      this.busyLoader.dismissBusyLoader();
       alert(error);
-      this.loading.dismiss();
     });
-  }
-
-  showLoading() {
-    this.loading = this.loadingCtrl.create({
-      content: 'Por favor espere...',
-      dismissOnPageChange: true
-    });
-    this.loading.present();
   }
 
   showError(text) {
