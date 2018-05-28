@@ -19,19 +19,23 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-slides class="image-slider" direction="vertical" slidesPerView="2" shouldEnableKeyboard="true">
-    <ion-slide class="animated slideInDown" *ngFor="let photo of images | async; let id = index">
-      <h4>{{photo.displayName}}</h4>
-      <img [src]="photo.image64Data" *ngIf="photo.image64Data" imageViewer alt="">
-    </ion-slide>
-    <!-- <ion-slide class="animated slideInDown">
-        <p>Nombre usuario</p>
-      <img src="https://loremflickr.com/320/240/ugly?random=2" imageViewer alt="">
-    </ion-slide>
-    <ion-slide class="animated slideInDown">
-      <p>Nombre usuario</p>
-      <img src="https://loremflickr.com/320/240/ugly?random=3" imageViewer alt="">
-    </ion-slide> -->
-  </ion-slides>
+<ion-content padding #content>
+ <ion-slides pager="false" #slides>
+   <ion-slide class="animated slideInDown" *ngFor="let photo of images | async; let id = index">
+    <!-- <ion-card>
+      <img [src]="photo.image64Data" *ngIf="photo.image64Data" imageViewer/>
+      <ion-card-content>
+        <ion-card-title>
+          {{photo.displayName}}
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card> -->
+    <ion-card class="card-background-page">
+      <img [src]="photo.image64Data" *ngIf="photo.image64Data" imageViewer/>
+      <!-- <div class="card-title"></div> -->
+      <div class="card-subtitle">{{photo.displayName}}</div>
+    </ion-card>
+   </ion-slide>
+ </ion-slides>
+
 </ion-content>
